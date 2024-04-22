@@ -17,7 +17,7 @@ public class Main {
             lineLengths[i] = Integer.parseInt(lines[i]);
         }
 
-        final int[] solution = TextbookAlgorithm.solve(n, m, lineLengths);
+        final int[] solution = new People(m).joinLines(lineLengths);
 
         for (int i = 0; i < m; i++) {
             System.out.println(solution[i]);
