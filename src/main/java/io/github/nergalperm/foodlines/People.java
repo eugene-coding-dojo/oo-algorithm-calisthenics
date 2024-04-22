@@ -12,9 +12,8 @@ public class People {
                               .toList();
     }
 
-    public List<Integer> joinLines(Foodlines foodlines) {
-        this.personList.stream().forEach(person -> person.joinLine(foodlines));
-        return foodlines.reportHistory();
+    public void joinLines(Foodlines foodlines) {
+        this.personList.forEach(person -> person.joinLine(foodlines));
     }
 
     private static class Person {

@@ -1,5 +1,6 @@
 package io.github.nergalperm.foodlines;
 
+import io.github.nergalperm.utils.Reporter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,9 @@ public class Foodlines {
                    .orElse(this.foodlineList.get(0));
     }
 
-    public List<Integer> reportHistory() {
-        return this.joinHistory;
+    public void reportHistory(Reporter reporter) {
+        for (Integer historyElement : joinHistory) {
+            reporter.reportNextElement(historyElement.toString());
+        }
     }
 }

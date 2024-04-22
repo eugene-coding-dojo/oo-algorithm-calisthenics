@@ -1,6 +1,6 @@
 package io.github.nergalperm.foodlines;
 
-import java.util.List;
+import io.github.nergalperm.utils.ConsoleLinesReporter;
 import java.util.Scanner;
 
 public class Main {
@@ -19,11 +19,9 @@ public class Main {
         }
 
         Foodlines foodlines = new Foodlines(lineLengths);
-        final List<Integer> solution = new People(m).joinLines(foodlines);
+        new People(m).joinLines(foodlines);
 
-        for (int i = 0; i < m; i++) {
-            System.out.println(solution.get(i));
-        }
+        foodlines.reportHistory(new ConsoleLinesReporter());
     }
 
 }
