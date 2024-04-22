@@ -18,10 +18,6 @@ class Foodline implements Comparable<Foodline> {
         this.length++;
     }
 
-    public int length() {
-        return this.length;
-    }
-
     public void reportLengthTo(List<Integer> joinHistory) {
         joinHistory.add(this.length);
     }

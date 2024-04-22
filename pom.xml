@@ -53,6 +53,7 @@
                 <configuration>
                     <excludedClasses>
                         <excludedClass>io.github.nergalperm.**.Main</excludedClass>
+                        <excludedClass>io.github.nergalperm.utils.*</excludedClass>
                     </excludedClasses>
                 </configuration>
             </plugin>

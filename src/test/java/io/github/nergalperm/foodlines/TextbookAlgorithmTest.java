@@ -13,11 +13,13 @@ class TextbookAlgorithmTest {
         final Foodlines foodlines = new Foodlines(new int[]{2, 3, 5});
         new People(5).joinLines(foodlines);
 
-        foodlines.reportHistory(new AssertionReporter(
-            List.of("2", "3", "3", "4", "4")));
+        final AssertionReporter reporter = new AssertionReporter(
+            List.of("2", "3", "3", "4", "4"));
+        foodlines.reportHistory(reporter);
+        assertThat(reporter.isEmpty()).isTrue();
     }
 
-    class AssertionReporter implements Reporter {
+    static class AssertionReporter implements Reporter {
         private final Deque<String> assertions = new ArrayDeque<>();
 
         public AssertionReporter(List<String> assertions) {
@@ -27,6 +29,10 @@ class TextbookAlgorithmTest {
         @Override
         public void reportNextElement(String element) {
             assertThat(element).isEqualTo(assertions.pollFirst());
+        }
+
+        public boolean isEmpty() {
+            return this.assertions.isEmpty();
         }
     }
 }
