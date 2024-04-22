@@ -13,20 +13,14 @@ public class People {
     }
 
     public List<Integer> joinLines(Foodlines foodlines) {
-        this.personList.forEach(person -> person.joinLine(foodlines));
-        return this.personList.stream().map(Person::lineLength).toList();
+        return this.personList.stream()
+                   .map(person -> person.joinLine(foodlines))
+                   .toList();
     }
 
     private static class Person {
-        private int lineLength;
-
-        public int lineLength() {
-            return this.lineLength;
-        }
-
-        public void joinLine(Foodlines foodlines) {
-            this.lineLength = foodlines.getShortestLength();
-            foodlines.increaseShortestLength();
+        public int joinLine(Foodlines foodlines) {
+            return foodlines.joinTheShortestLine();
         }
     }
 }

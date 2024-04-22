@@ -13,17 +13,23 @@ public class Foodlines {
         }
     }
 
+    int joinTheShortestLine() {
+        int lineLength = this.getShortestLength();
+        this.increaseShortestLength();
+        return lineLength;
+    }
+
     private Foodline getShortest() {
         return this.foodlineList.stream()
                    .min(Foodline::compareTo)
                    .orElse(this.foodlineList.get(0));
     }
 
-    public int getShortestLength() {
+    private int getShortestLength() {
         return this.getShortest().length();
     }
 
-    public void increaseShortestLength() {
+    private void increaseShortestLength() {
         this.getShortest().join();
     }
 
