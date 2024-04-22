@@ -6,17 +6,20 @@ import java.util.List;
 public class Foodlines {
     private final List<Foodline> foodlineList;
 
+    private final List<Integer> joinHistory;
+
     public Foodlines(int[] lineLengths) {
         foodlineList = new ArrayList<>(lineLengths.length);
         for (int lineLength : lineLengths) {
             this.foodlineList.add(new Foodline(lineLength));
         }
+        joinHistory = new ArrayList<>();
     }
 
-    int joinTheShortestLine() {
-        int lineLength = this.getShortestLength();
-        this.increaseShortestLength();
-        return lineLength;
+    void joinTheShortestLine() {
+        final Foodline shortestLine = this.getShortest();
+        shortestLine.reportLengthTo(this.joinHistory);
+        shortestLine.join();
     }
 
     private Foodline getShortest() {
@@ -25,12 +28,7 @@ public class Foodlines {
                    .orElse(this.foodlineList.get(0));
     }
 
-    private int getShortestLength() {
-        return this.getShortest().length();
+    public List<Integer> reportHistory() {
+        return this.joinHistory;
     }
-
-    private void increaseShortestLength() {
-        this.getShortest().join();
-    }
-
 }

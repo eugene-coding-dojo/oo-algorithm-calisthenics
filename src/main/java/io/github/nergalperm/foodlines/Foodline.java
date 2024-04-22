@@ -1,5 +1,7 @@
 package io.github.nergalperm.foodlines;
 
+import java.util.List;
+
 class Foodline implements Comparable<Foodline> {
     private int length;
 
@@ -18,5 +20,9 @@ class Foodline implements Comparable<Foodline> {
 
     public int length() {
         return this.length;
+    }
+
+    public void reportLengthTo(List<Integer> joinHistory) {
+        joinHistory.add(this.length);
     }
 }
