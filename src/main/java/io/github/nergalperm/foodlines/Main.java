@@ -18,7 +18,8 @@ public class Main {
             lineLengths[i] = Integer.parseInt(lines[i]);
         }
 
-        final List<Integer> solution = new People(m).joinLines(lineLengths);
+        Foodlines foodlines = new Foodlines(lineLengths);
+        final List<Integer> solution = new People(m).joinLines(foodlines);
 
         for (int i = 0; i < m; i++) {
             System.out.println(solution.get(i));
