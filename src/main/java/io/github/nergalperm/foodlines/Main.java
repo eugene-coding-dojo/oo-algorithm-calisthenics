@@ -17,30 +17,11 @@ public class Main {
             lineLengths[i] = Integer.parseInt(lines[i]);
         }
 
-        final int[] solution = solve(n, m, lineLengths);
+        final int[] solution = TextbookAlgorithm.solve(n, m, lineLengths);
 
         for (int i = 0; i < m; i++) {
             System.out.println(solution[i]);
         }
     }
 
-    private static int[] solve(int n, int m, int[] lineLengths) {
-        int[] result = new int[m];
-        for (int i = 0; i < m; i++) {
-            int shortestIndex = getShortestIndex(lineLengths);
-            result[i] = lineLengths[shortestIndex];
-            lineLengths[shortestIndex]++;
-        }
-        return result;
-    }
-
-    private static int getShortestIndex(int[] lineLengths) {
-        int shortestIndex = 0;
-        for (int i = 1; i < lineLengths.length; i++) {
-            if (lineLengths[i] < lineLengths[shortestIndex]) {
-                shortestIndex = i;
-            }
-        }
-        return shortestIndex;
-    }
 }
