@@ -12,14 +12,13 @@ public class People {
                               .toList();
     }
 
-    public int[] joinLines(int[] lineLengths) {
-        int[] result = new int[this.personList.size()];
-        for (int i = 0; i < this.personList.size(); i++) {
+    public List<Integer> joinLines(int[] lineLengths) {
+        for (Person person : this.personList) {
             int shortestIndex = getShortestIndex(lineLengths);
-            result[i] = lineLengths[shortestIndex];
+            person.storeLineState(lineLengths[shortestIndex]);
             lineLengths[shortestIndex]++;
         }
-        return result;
+        return this.personList.stream().map(Person::lineLength).toList();
     }
 
     private int getShortestIndex(int[] lineLengths) {
@@ -33,5 +32,14 @@ public class People {
     }
 
     private class Person {
+        private int lineLength;
+
+        public void storeLineState(int lineLength) {
+            this.lineLength = lineLength;
+        }
+
+        public int lineLength() {
+            return this.lineLength;
+        }
     }
 }

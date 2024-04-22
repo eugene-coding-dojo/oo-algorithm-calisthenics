@@ -1,5 +1,6 @@
 package io.github.nergalperm.foodlines;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -17,10 +18,10 @@ public class Main {
             lineLengths[i] = Integer.parseInt(lines[i]);
         }
 
-        final int[] solution = new People(m).joinLines(lineLengths);
+        final List<Integer> solution = new People(m).joinLines(lineLengths);
 
         for (int i = 0; i < m; i++) {
-            System.out.println(solution[i]);
+            System.out.println(solution.get(i));
         }
     }
 
