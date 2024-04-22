@@ -1,27 +1,30 @@
 package io.github.nergalperm.foodlines;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Foodlines {
-    private final int[] lineLengths;
+    private final List<Foodline> foodlineList;
 
     public Foodlines(int[] lineLengths) {
-        this.lineLengths = lineLengths;
+        foodlineList = new ArrayList<>(lineLengths.length);
+        for (int lineLength : lineLengths) {
+            this.foodlineList.add(new Foodline(lineLength));
+        }
     }
 
-    private int getShortestIndex() {
-        int shortestIndex = 0;
-        for (int i = 1; i < this.lineLengths.length; i++) {
-            if (this.lineLengths[i] < this.lineLengths[shortestIndex]) {
-                shortestIndex = i;
-            }
-        }
-        return shortestIndex;
+    private Foodline getShortest() {
+        return this.foodlineList.stream()
+                   .min(Foodline::compareTo)
+                   .orElse(this.foodlineList.get(0));
     }
 
     public int getShortestLength() {
-        return this.lineLengths[this.getShortestIndex()];
+        return this.getShortest().length();
     }
 
     public void increaseShortestLength() {
-        this.lineLengths[this.getShortestIndex()]++;
+        this.getShortest().join();
     }
+
 }
