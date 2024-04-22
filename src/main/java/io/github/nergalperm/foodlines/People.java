@@ -13,23 +13,14 @@ public class People {
     }
 
     public List<Integer> joinLines(int[] lineLengths) {
+        Foodlines foodlines = new Foodlines(lineLengths);
         for (Person person : this.personList) {
-            int shortestIndex = getShortestIndex(lineLengths);
-            person.storeLineState(lineLengths[shortestIndex]);
-            lineLengths[shortestIndex]++;
+            person.storeLineState(foodlines.getShortestLength());
+            foodlines.increaseShortestLength();
         }
         return this.personList.stream().map(Person::lineLength).toList();
     }
 
-    private int getShortestIndex(int[] lineLengths) {
-        int shortestIndex = 0;
-        for (int i = 1; i < lineLengths.length; i++) {
-            if (lineLengths[i] < lineLengths[shortestIndex]) {
-                shortestIndex = i;
-            }
-        }
-        return shortestIndex;
-    }
 
     private class Person {
         private int lineLength;
@@ -40,6 +31,32 @@ public class People {
 
         public int lineLength() {
             return this.lineLength;
+        }
+    }
+
+    private class Foodlines {
+        private final int[] lineLengths;
+
+        public Foodlines(int[] lineLengths) {
+            this.lineLengths = lineLengths;
+        }
+
+        private int getShortestIndex() {
+            int shortestIndex = 0;
+            for (int i = 1; i < this.lineLengths.length; i++) {
+                if (this.lineLengths[i] < this.lineLengths[shortestIndex]) {
+                    shortestIndex = i;
+                }
+            }
+            return shortestIndex;
+        }
+
+        public int getShortestLength() {
+            return this.lineLengths[this.getShortestIndex()];
+        }
+
+        public void increaseShortestLength() {
+            this.lineLengths[this.getShortestIndex()]++;
         }
     }
 }
