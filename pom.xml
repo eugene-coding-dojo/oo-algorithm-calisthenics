@@ -52,7 +52,7 @@
                 </executions>
                 <configuration>
                     <excludedClasses>
-                        <excludedClass>io.github.nergalperm.**.Main</excludedClass>
+                        <excludedClass>algorithms.workout.Main</excludedClass>
                     </excludedClasses>
                 </configuration>
             </plugin>
