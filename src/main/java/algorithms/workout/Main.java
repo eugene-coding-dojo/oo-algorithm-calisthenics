@@ -7,7 +7,32 @@ public class Main {
     private static final ConsoleWriter write = new ConsoleWriter();
 
     public static void main(String[] args) {
-        write.oneValuePerLine(read.asIntArray());
+        final int[] firstLine = read.asIntArray();
+        final int n = firstLine[0];
+        final int m = firstLine[1];
+
+        final int[] lines = read.asIntArray();
+        solve(n, m, lines);
+    }
+
+    private static void solve(int n, int m, int[] lines) {
+        int[] lineJoinHistory = new int[m];
+        for (int i = 0; i < m; i++) {
+            int shortestLineIndex = shortestLineIndex(lines);
+            lineJoinHistory[i] = lines[shortestLineIndex];
+            lines[shortestLineIndex]++;
+        }
+        write.oneValuePerLine(lineJoinHistory);
+    }
+
+    private static int shortestLineIndex(int[] lines) {
+        int shortestLineIndex = 0;
+        for (int i = 1; i < lines.length; i++) {
+            if (lines[i] < lines[shortestLineIndex]) {
+                shortestLineIndex = i;
+            }
+        }
+        return shortestLineIndex;
     }
 }
 
