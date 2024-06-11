@@ -1,5 +1,6 @@
 package algorithms.workout;
 
+import algorithms.workout.foodlines.Algorithm;
 import java.util.Scanner;
 
 public class Main {
@@ -12,28 +13,9 @@ public class Main {
         final int m = firstLine[1];
 
         final int[] lines = read.asIntArray();
-        final int[] solved = solve(n, m, lines);
+        final int[] solved = Algorithm.solve(n, m, lines);
+
         write.oneValuePerLine(solved);
-    }
-
-    private static int[] solve(int n, int m, int[] lines) {
-        int[] lineJoinHistory = new int[m];
-        for (int i = 0; i < m; i++) {
-            int shortestLineIndex = shortestLineIndex(lines);
-            lineJoinHistory[i] = lines[shortestLineIndex];
-            lines[shortestLineIndex]++;
-        }
-        return lineJoinHistory;
-    }
-
-    private static int shortestLineIndex(int[] lines) {
-        int shortestLineIndex = 0;
-        for (int i = 1; i < lines.length; i++) {
-            if (lines[i] < lines[shortestLineIndex]) {
-                shortestLineIndex = i;
-            }
-        }
-        return shortestLineIndex;
     }
 }
 
