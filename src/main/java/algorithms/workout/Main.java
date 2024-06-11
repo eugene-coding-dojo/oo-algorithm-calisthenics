@@ -12,17 +12,18 @@ public class Main {
         final int m = firstLine[1];
 
         final int[] lines = read.asIntArray();
-        solve(n, m, lines);
+        final int[] solved = solve(n, m, lines);
+        write.oneValuePerLine(solved);
     }
 
-    private static void solve(int n, int m, int[] lines) {
+    private static int[] solve(int n, int m, int[] lines) {
         int[] lineJoinHistory = new int[m];
         for (int i = 0; i < m; i++) {
             int shortestLineIndex = shortestLineIndex(lines);
             lineJoinHistory[i] = lines[shortestLineIndex];
             lines[shortestLineIndex]++;
         }
-        write.oneValuePerLine(lineJoinHistory);
+        return lineJoinHistory;
     }
 
     private static int shortestLineIndex(int[] lines) {
