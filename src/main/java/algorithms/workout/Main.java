@@ -1,6 +1,6 @@
 package algorithms.workout;
 
-import algorithms.workout.foodlines.Algorithm;
+import algorithms.workout.foodlines.People;
 import java.util.Scanner;
 
 public class Main {
@@ -13,7 +13,7 @@ public class Main {
         final int m = firstLine[1];
 
         final int[] lines = read.asIntArray();
-        final int[] solved = Algorithm.solve(m, lines);
+        final int[] solved = new People(m).join(lines);
 
         write.oneValuePerLine(solved);
     }

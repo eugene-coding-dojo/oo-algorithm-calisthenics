@@ -1,9 +1,15 @@
 package algorithms.workout.foodlines;
 
-public class Algorithm {
-    public static int[] solve(int m, int[] lines) {
-        int[] lineJoinHistory = new int[m];
-        for (int i = 0; i < m; i++) {
+public class People {
+    private int count;
+
+    public People(int count) {
+        this.count = count;
+    }
+
+    public int[] join(int[] lines) {
+        int[] lineJoinHistory = new int[this.count];
+        for (int i = 0; i < this.count; i++) {
             int shortestLineIndex = shortestLineIndex(lines);
             lineJoinHistory[i] = lines[shortestLineIndex];
             lines[shortestLineIndex]++;
