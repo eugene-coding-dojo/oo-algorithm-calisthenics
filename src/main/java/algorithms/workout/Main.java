@@ -13,7 +13,7 @@ public class Main {
         final int m = firstLine[1];
 
         final int[] lines = read.asIntArray();
-        final int[] solved = Algorithm.solve(n, m, lines);
+        final int[] solved = Algorithm.solve(m, lines);
 
         write.oneValuePerLine(solved);
     }

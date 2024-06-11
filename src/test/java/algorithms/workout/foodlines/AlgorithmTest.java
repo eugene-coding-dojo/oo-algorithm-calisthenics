@@ -8,7 +8,7 @@ class AlgorithmTest {
     void shouldFindTheShortestLine() {
         int[] lines = {2, 3, 7};
         int[] expected = {2, 3, 3, 4, 4};
-        int[] actual = Algorithm.solve(3, 5, lines);
+        int[] actual = Algorithm.solve(5, lines);
 
         assertThat(actual).isEqualTo(expected);
     }

@@ -1,7 +1,7 @@
 package algorithms.workout.foodlines;
 
 public class Algorithm {
-    public static int[] solve(int n, int m, int[] lines) {
+    public static int[] solve(int m, int[] lines) {
         int[] lineJoinHistory = new int[m];
         for (int i = 0; i < m; i++) {
             int shortestLineIndex = shortestLineIndex(lines);
