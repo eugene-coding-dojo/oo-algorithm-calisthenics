@@ -1,5 +1,6 @@
 package algorithms.workout;
 
+import algorithms.workout.foodlines.Foodlines;
 import algorithms.workout.foodlines.People;
 import java.util.Scanner;
 
@@ -9,11 +10,10 @@ public class Main {
 
     public static void main(String[] args) {
         final int[] firstLine = read.asIntArray();
-        final int n = firstLine[0];
-        final int m = firstLine[1];
 
         final int[] lines = read.asIntArray();
-        final int[] solved = new People(m).join(lines);
+        final Foodlines foodlines = new Foodlines(lines);
+        final int[] solved = new People(firstLine[1]).join(lines, foodlines);
 
         write.oneValuePerLine(solved);
     }
