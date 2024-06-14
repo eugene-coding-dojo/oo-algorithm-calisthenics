@@ -1,14 +1,14 @@
 package algorithms.workout.foodlines;
 
 public class Person {
-    private int joinedLineLength;
+    private Foodline foodline;
 
     public void joinTheShortestAmong(Foodlines foodlines) {
-        this.joinedLineLength = foodlines.lengthOfTheShortest();
-        foodlines.incrementTheShortest();
+        this.foodline = foodlines.shortestLine();
+        this.foodline.queue(this);
     }
 
     public int joinedLineLength() {
-        return this.joinedLineLength;
+        return this.foodline.indexOf(this);
     }
 }
