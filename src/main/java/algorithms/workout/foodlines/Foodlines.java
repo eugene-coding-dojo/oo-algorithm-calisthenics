@@ -21,4 +21,12 @@ public class Foodlines {
         }
         return shortestLineIndex;
     }
+
+    public int lengthOfTheShortest() {
+        return this.lines[this.indexOfTheShortest()];
+    }
+
+    public void incrementTheShortest() {
+        this.lines[this.indexOfTheShortest()]++;
+    }
 }

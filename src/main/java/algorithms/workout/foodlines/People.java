@@ -7,12 +7,11 @@ public class People {
         this.count = count;
     }
 
-    public int[] join(int[] lines, Foodlines foodlines) {
+    public int[] join(Foodlines foodlines) {
         int[] lineJoinHistory = new int[this.count];
         for (int i = 0; i < this.count; i++) {
-            int shortestLineIndex = foodlines.indexOfTheShortest();
-            lineJoinHistory[i] = lines[shortestLineIndex];
-            lines[shortestLineIndex]++;
+            lineJoinHistory[i] = foodlines.lengthOfTheShortest();
+            foodlines.incrementTheShortest();
         }
         return lineJoinHistory;
     }

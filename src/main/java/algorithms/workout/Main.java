@@ -13,7 +13,7 @@ public class Main {
 
         final int[] lines = read.asIntArray();
         final Foodlines foodlines = new Foodlines(lines);
-        final int[] solved = new People(firstLine[1]).join(lines, foodlines);
+        final int[] solved = new People(firstLine[1]).join(foodlines);
 
         write.oneValuePerLine(solved);
     }

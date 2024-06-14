@@ -8,7 +8,7 @@ class PeopleTest {
     void shouldFindTheShortestLine() {
         int[] lines = {2, 3, 7};
         int[] expected = {2, 3, 3, 4, 4};
-        int[] actual = new People(5).join(lines, new Foodlines(lines));
+        int[] actual = new People(5).join(new Foodlines(lines));
 
         assertThat(actual).isEqualTo(expected);
     }
