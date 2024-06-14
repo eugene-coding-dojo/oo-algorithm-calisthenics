@@ -1,17 +1,19 @@
 package algorithms.workout.foodlines;
 
+import java.util.List;
+import java.util.stream.IntStream;
+
 public class People {
-    private final int[] lineJoinHistory;
+    private final List<Person> people;
 
     public People(int count) {
-        this.lineJoinHistory = new int[count];
+        this.people = IntStream.range(0, count).mapToObj(i -> new Person()).toList();
     }
 
     public int[] join(Foodlines foodlines) {
-        for (int i = 0; i < this.lineJoinHistory.length; i++) {
-            lineJoinHistory[i] = foodlines.lengthOfTheShortest();
-            foodlines.incrementTheShortest();
-        }
-        return lineJoinHistory;
+        return this.people.stream().map(person -> {
+            person.joinTheShortestAmong(foodlines);
+            return person.joinedLineLength();
+        }).mapToInt(Integer::intValue).toArray();
     }
 }
