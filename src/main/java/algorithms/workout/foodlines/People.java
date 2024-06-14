@@ -1,15 +1,14 @@
 package algorithms.workout.foodlines;
 
 public class People {
-    private final int count;
+    private final int[] lineJoinHistory;
 
     public People(int count) {
-        this.count = count;
+        this.lineJoinHistory = new int[count];
     }
 
     public int[] join(Foodlines foodlines) {
-        int[] lineJoinHistory = new int[this.count];
-        for (int i = 0; i < this.count; i++) {
+        for (int i = 0; i < this.lineJoinHistory.length; i++) {
             lineJoinHistory[i] = foodlines.lengthOfTheShortest();
             foodlines.incrementTheShortest();
         }
