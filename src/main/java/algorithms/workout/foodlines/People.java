@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class People {
+public class People implements Comparable<People> {
     private final List<Person> people;
 
     public People(int count) {
@@ -30,7 +30,13 @@ public class People {
         return this.people.indexOf(person);
     }
 
-    public int size() {
+    @Override
+    public int compareTo(People o) {
+        return Integer.compare(this.size(), o.size());
+    }
+
+    private int size() {
         return this.people.size();
     }
+
 }

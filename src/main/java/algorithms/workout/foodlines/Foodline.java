@@ -8,8 +8,8 @@ public class Foodline implements Comparable<Foodline> {
     }
 
     @Override
-    public int compareTo(Foodline o) {
-        return Integer.compare(this.people.size(), o.people.size());
+    public int compareTo(Foodline other) {
+        return this.people.compareTo(other.people);
     }
 
     public void queue(Person person) {
