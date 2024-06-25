@@ -14,17 +14,23 @@ public class People {
     }
 
     public int[] join(Foodlines foodlines) {
-        return this.people.stream().map(person -> {
-            person.joinTheShortestAmong(foodlines);
-            return person.joinedLineLength();
-        }).mapToInt(Integer::intValue).toArray();
+        return this.people.stream()
+                   .map(person -> {
+                       person.joinTheShortestAmong(foodlines);
+                       return person.joinedLineLength();
+                   })
+                   .mapToInt(Integer::intValue).toArray();
     }
 
     public void add(Person person) {
-        people.add(person);
+        this.people.add(person);
     }
 
     public int indexOf(Person person) {
-        return people.indexOf(person);
+        return this.people.indexOf(person);
+    }
+
+    public int size() {
+        return this.people.size();
     }
 }
